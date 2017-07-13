@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Calculette.Calcul
 {
+    enum OPERATION { ADD, SOUS, MULT, DIV, DEFAULT};
+
+
     class Main_Calcul
     {
 
@@ -36,5 +39,41 @@ namespace Calculette.Calcul
         }
 
 
+    }
+
+    class Line
+    {
+        public double mFirstOperande {get; private set;}
+        public double mSecondOperande { get; private set; }
+        public OPERATION mOperation { get; private set; }
+
+        public Line(double inFirstOperande, double inSecondOperande, OPERATION inOperation)
+        {
+            mFirstOperande = inFirstOperande;
+            mSecondOperande = inSecondOperande;
+            mOperation = inOperation;
+        }
+
+        public double Calculate()
+        {
+            double theResult = 0;
+
+            switch (mOperation)
+            {
+                case OPERATION.ADD:
+                    theResult = mFirstOperande + mSecondOperande;
+                    break;
+                case OPERATION.SOUS:
+                    theResult = mFirstOperande - mSecondOperande;
+                    break;
+                case OPERATION.DIV:
+                    theResult = mFirstOperande / mSecondOperande;
+                    break;
+                case OPERATION.MULT:
+                    theResult = mFirstOperande * mSecondOperande;
+                    break;
+            }
+            return theResult;
+        }
     }
 }
