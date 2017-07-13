@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace Calculette.ManualMode
 {
-    class IHMManual
+    class IHMManual : IHM
     {
+        public IHMManual()
+        {
+            Console.Write("Création de l'IHM Manual\n");
+        }
+
+        public override bool Process()
+        {
+            Console.Write("Process of the IHM Manual Function\n");
+            return true;
+        }
+
     }
 }

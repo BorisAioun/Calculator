@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calculette.ScriptedMode
 {
-    class IHMScripted
+    class IHMScripted : IHM
     {
 
         private string mFilePath
@@ -23,19 +23,22 @@ namespace Calculette.ScriptedMode
         }
 
 
-        IHMScripted()
+        public IHMScripted()
         {
             Console.Write("Création de l'IHM Scripted sans adresse");
         }
 
-        IHMScripted(string inFilePath)
+        public IHMScripted(string inFilePath)
         {
             Console.Write("Création de l'IHM Scripted avec adresse");
         }
 
-        public void Test()
+
+        public override bool Process()
         {
-            return;
+            Console.Write("Process of the IHM Scripted Function\n");
+            return true;
         }
+
     }
 }
