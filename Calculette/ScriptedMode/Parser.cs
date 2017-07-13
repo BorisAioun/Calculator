@@ -8,7 +8,7 @@ namespace Calculette.ScriptedMode
 {
     class Parser
     {
-        private string mFilePath
+        public string mFilePath
         {
             get
             {

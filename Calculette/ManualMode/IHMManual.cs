@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Calculette.Calcul;
 
 namespace Calculette.ManualMode
 {
@@ -15,7 +16,11 @@ namespace Calculette.ManualMode
 
         public override bool Process()
         {
+            Main_Calcul theCalcul = new Main_Calcul();
             Console.Write("Process of the IHM Manual Function\n");
+            theCalcul.Calculate();
+
+
             return true;
         }
 
