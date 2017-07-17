@@ -163,8 +163,8 @@ namespace Calculette
                 && (expression[2] != System.String.Empty)
                 && (ConvertOperation(expression[1]) != OPERATION.DEFAULT))
             {
-                theLine = new Line(Convert.ToDouble(expression[0]),
-                                   Convert.ToDouble(expression[2]),
+                theLine = new Line(Tools.StringToDouble(expression[0]),
+                                   Tools.StringToDouble(expression[2]),
                                    ConvertOperation(expression[1]));
 
             }
