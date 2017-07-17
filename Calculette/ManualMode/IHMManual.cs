@@ -25,18 +25,28 @@ namespace Calculette.ManualMode
     {
         public IHMManual()
         {
-            Console.Write("Création de l'IHM Manual\n");
+            Program.DebugMessage("Création de l'IHM Manual\n");
         }
 
         public override bool Process()
         {
-            Main_Calcul theCalcul = new Main_Calcul();
-            string theReadLine = "2,5 + 33";
-            Console.Write("Process of the IHM Manual Function\n");
-            theCalcul.Calculate();
+            String theReadLine = null;
+            
+            Console.Write("Please enter your calcul \n");
+            theReadLine = Console.ReadLine();
+            Console.Write("You write the following line " + theReadLine + " \n");
+            if( !IHM.YorNoDialog("Do You Want to process the Calcul ?"))
+            {
+                return false;
+            }
+            
+
+            Main_Calcul theCalcul = new Main_Calcul(CreateLine(theReadLine));
+            Program.DebugMessage("Process of the IHM Manual Function\n");
 
 
-            return true;
+            return theCalcul.Calculate();
+                       
         }
 
         public Line CreateLine(string inLine)

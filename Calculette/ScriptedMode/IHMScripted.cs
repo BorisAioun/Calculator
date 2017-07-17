@@ -28,19 +28,19 @@ namespace Calculette.ScriptedMode
 
         public IHMScripted()
         {
-            Console.Write("Création de l'IHM Scripted sans adresse");
+            Program.DebugMessage("Création de l'IHM Scripted sans adresse");
         }
 
         public IHMScripted(string inFilePath)
         {
-            Console.Write("Création de l'IHM Scripted avec adresse");
+            Program.DebugMessage("Création de l'IHM Scripted avec adresse");
             FilePath = inFilePath;
         }
 
 
         public override bool Process()
         {
-            Console.Write("Process of the IHM Scripted Function\n");
+            Program.DebugMessage("Process of the IHM Scripted Function\n");
             Main_Calcul theCalcul = new Main_Calcul();
 
 

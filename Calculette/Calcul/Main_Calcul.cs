@@ -11,30 +11,36 @@ namespace Calculette.Calcul
 
     class Main_Calcul
     {
+        public Line mLine { get; private set; }                  //the line which will be use to make the calcul.
+        public bool mprinted { get; private set; }               //indicate if the result of a calcul should be printed in the screen
 
-        private bool m_printed;
-
-        public bool printed                     //indicate if the result of a calcul should be printed in the screen
+        public Main_Calcul(Line theLine)
         {
-            get
-            {
-                return m_printed;
-            }
-
-            set
-            {
-                m_printed = value;
-            }
+            mLine = theLine;
+            mprinted = true;
         }
 
         public Main_Calcul()
         {
-            printed = true;
+            mLine = null;
+            mprinted = true;
         }
+
 
         public bool Calculate()
         {
-            Console.Write("Result of the Calcul\n");
+            double theResult = 0;
+
+            if(mLine == null)
+            {
+                return false;
+            }
+
+            theResult = mLine.Calculate();
+            if (mprinted)
+            {
+                Console.Write("Result of the Calcul is: " +  theResult + " \n");
+            }
             return true;
         }
 

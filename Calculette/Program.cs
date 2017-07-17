@@ -1,10 +1,14 @@
-﻿using Calculette.ManualMode;
+﻿#define DEBUG
+
+using Calculette.ManualMode;
 using Calculette.ScriptedMode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+
 
 namespace Calculette
 {
@@ -33,7 +37,7 @@ namespace Calculette
                 {
                     Console.Write("You chose the Manual Mode\n");
                 }
-                else if(theKey.Key == ConsoleKey.O)
+                else if(theKey.Key == ConsoleKey.N)
                 {
                     Console.Write("You chose the Scripted Mode\n");
                     isManualMode = false;
@@ -57,16 +61,24 @@ namespace Calculette
 
             if(theIHM.Process())
             {
-                Console.Write("Tout s'est bien déroulé\n");
+                DebugMessage("Tout s'est bien déroulé\n");
             }
             else
             {
-                Console.Write("Houston on a eu un problème\n");
+                DebugMessage("Houston on a eu un problème\n");
             }
 
             Console.Write("Closing the Calculator\n");
             Console.Read();
         }
+
+        public static void DebugMessage(string inString)
+        {
+#if (DEBUG)
+            Console.Write(inString);
+#endif
+        }
+
     }
 
 
@@ -76,12 +88,32 @@ namespace Calculette
         {
         }
 
+        public static bool YorNoDialog(string inMessage)
+        {
+            Console.Write(inMessage + " y or n ?\n");
+            ConsoleKeyInfo theKey = Console.ReadKey(true);
+            if (theKey.Key == ConsoleKey.Y)
+            {
+                return true;
+            }
+            else if (theKey.Key == ConsoleKey.N)
+            {
+                return false;
+            }
+            return false;
+        }
+
+
         public virtual bool Process()
         {
-            Console.Write("Process classe IHM\n");
+            Program.DebugMessage("Process classe IHM\n");
             return true;
         }
     }
+
+
+
+
 
 
 
