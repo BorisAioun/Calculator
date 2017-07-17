@@ -1,5 +1,5 @@
-Calculette\Properties\*
-Calculette\bin\*
-Calculette\obj\*
+Calculette/Properties/
+Calculette/bin/
+Calculette/obj/
 Calculette_Test.txt
-.vs\*
+.vs/
