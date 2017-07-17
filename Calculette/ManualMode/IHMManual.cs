@@ -49,47 +49,5 @@ namespace Calculette.ManualMode
                        
         }
 
-        public Line CreateLine(string inLine)
-        {
-            Line theLine;
-
-            string[] expression = inLine.Split(' ');
-
-            if(    (expression[0] != System.String.Empty) 
-                && (expression[2] !=System.String.Empty)
-                && (ConvertOperation(expression[1]) != OPERATION.DEFAULT))
-            {
-                theLine = new Line(Convert.ToDouble(expression[0]),
-                                   Convert.ToDouble(expression[2]),
-                                   ConvertOperation(expression[1]));
-                                   
-            }
-            else
-            {
-                return null;
-            }
-            
-
-            return theLine;
-        }
-
-
-        public OPERATION ConvertOperation(string inOperation)
-        {
-            switch(inOperation)
-            {
-                case "+":
-                    return OPERATION.ADD;
-
-                case "-":
-                    return OPERATION.SOUS;
-                case "/":
-                    return OPERATION.DIV;
-                case "*":
-                    return OPERATION.MULT;
-                default:
-                    return OPERATION.DEFAULT;
-            }
-        }
     }
 }

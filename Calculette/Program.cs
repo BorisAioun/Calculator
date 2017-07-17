@@ -2,7 +2,9 @@
 
 using Calculette.ManualMode;
 using Calculette.ScriptedMode;
+using Calculette.Calcul;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,7 +45,17 @@ namespace Calculette
                     isManualMode = false;
                     Console.Write("Please enter the Path of you script file\n");
                     theFilePath = Console.ReadLine();
-                    Console.Write("You enter the following Path: %s \n", theFilePath);
+                    //theFilePath = "C:/Users/bobo/Desktop/TutoC#/Calculette/Calculette_Test.txt";
+                    if( File.Exists(theFilePath) )
+                    {
+                        Console.Write("You enter the following Path: " + theFilePath + " \n");
+                    }
+                    else
+                    {
+                        Console.Write("the file " + theFilePath +" does not exist \n");
+                        goto End;
+                    }
+
                 }
 
             }
@@ -68,6 +80,7 @@ namespace Calculette
                 DebugMessage("Houston on a eu un problème\n");
             }
 
+            End:
             Console.Write("Closing the Calculator\n");
             Console.Read();
         }
@@ -108,6 +121,50 @@ namespace Calculette
         {
             Program.DebugMessage("Process classe IHM\n");
             return true;
+        }
+
+        public OPERATION ConvertOperation(string inOperation)
+        {
+            switch (inOperation)
+            {
+                case "+":
+                    return OPERATION.ADD;
+
+                case "-":
+                    return OPERATION.SOUS;
+                case "/":
+                    return OPERATION.DIV;
+                case "*":
+                    return OPERATION.MULT;
+                default:
+                    return OPERATION.DEFAULT;
+            }
+        }
+
+        public Line CreateLine(string inLine)
+        {
+            Line theLine;
+
+            string[] expression = inLine.Split(' ');
+
+            //Rajouter un test de sécurité sur le découpage de la chaine car quand pas d'espace ça bug
+
+            if ((expression[0] != System.String.Empty)
+                && (expression[2] != System.String.Empty)
+                && (ConvertOperation(expression[1]) != OPERATION.DEFAULT))
+            {
+                theLine = new Line(Convert.ToDouble(expression[0]),
+                                   Convert.ToDouble(expression[2]),
+                                   ConvertOperation(expression[1]));
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+            return theLine;
         }
     }
 

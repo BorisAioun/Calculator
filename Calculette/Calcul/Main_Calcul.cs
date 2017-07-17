@@ -11,7 +11,7 @@ namespace Calculette.Calcul
 
     class Main_Calcul
     {
-        public Line mLine { get; private set; }                  //the line which will be use to make the calcul.
+        public Line mLine { get; set; }                  //the line which will be use to make the calcul.
         public bool mprinted { get; private set; }               //indicate if the result of a calcul should be printed in the screen
 
         public Main_Calcul(Line theLine)
