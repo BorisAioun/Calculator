@@ -25,14 +25,15 @@ namespace Calculette
 
 
             //Managing the mode of the Calculator
-            if (args.Length != 0)
+            if (args.Length != 0 && File.Exists(args[0]) )
             {
                 theFilePath = args[0];
-                //Rajouter un test pour vérifier que le fichier existe
                 isManualMode = false;
             }
             else
             {
+                int theIt = 10;
+
                 Console.Write("Would you use the calculator in manual mode ? y or n ?\n");
                 ConsoleKeyInfo theKey = Console.ReadKey(true);
                 if(theKey.Key == ConsoleKey.Y)
@@ -46,6 +47,15 @@ namespace Calculette
                     Console.Write("Please enter the Path of you script file\n");
                     theFilePath = Console.ReadLine();
                     //theFilePath = "C:/Users/bobo/Desktop/TutoC#/Calculette/Calculette_Test.txt";
+
+                    while (!File.Exists(theFilePath) && (theIt != 0 ))
+                    {
+                        Console.Write("the file " + theFilePath + " does not exist \n");
+                        Console.Write("Please re enter the Path of you script file\n");
+                        theFilePath = Console.ReadLine();
+                        theIt--;
+                    }
+
                     if( File.Exists(theFilePath) )
                     {
                         Console.Write("You enter the following Path: " + theFilePath + " \n");
