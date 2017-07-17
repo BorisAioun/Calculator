@@ -1,0 +1,5 @@
+C:\Users\bobo\Desktop\TutoC#\Calculette\Calculette\bin\Release\Calculette.exe.config
+C:\Users\bobo\Desktop\TutoC#\Calculette\Calculette\bin\Release\Calculette.exe
+C:\Users\bobo\Desktop\TutoC#\Calculette\Calculette\bin\Release\Calculette.pdb
+C:\Users\bobo\Desktop\TutoC#\Calculette\Calculette\obj\Release\Calculette.exe
+C:\Users\bobo\Desktop\TutoC#\Calculette\Calculette\obj\Release\Calculette.pdb
