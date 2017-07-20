@@ -71,7 +71,17 @@ namespace Calculette.Calcul
 
         private void Convert()
         {
-            string[] expression = mInitialLine.Split('(');
+            bool isNegatif = false;
+            string theAbsoluteString = mInitialLine;
+
+            if (mInitialLine[0] == '-')
+            {
+                isNegatif = true;
+                theAbsoluteString = mInitialLine.Substring(1);
+            }
+
+
+            string[] expression = theAbsoluteString.Split('(');
 
             if (expression.Length != 2)
             {
@@ -81,7 +91,10 @@ namespace Calculette.Calcul
             mOperation = Tools.ConvertOperation(expression[0]);
             string[] expression2 = expression[1].Split(')');
             mOperande = Tools.StringToDouble(expression2[0]);
-
+            if (isNegatif)
+            {
+                mOperande = -mOperande;
+            }
         }
 
         public override bool Calculate()
