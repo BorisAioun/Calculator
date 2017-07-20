@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calculette.Calcul
 {
-    enum OPERATION { ADD, SOUS, MULT, DIV, DEFAULT};
-
+    enum OPERATION { ADD, SOUS, MULT, DIV, EXP, LOG, LN, SIN, COS, TAN, DEFAULT};
 
     class Main_Calcul
     {
@@ -29,57 +28,27 @@ namespace Calculette.Calcul
 
         public bool Calculate()
         {
-            double theResult = 0;
-
             if(mLine == null)
             {
                 return false;
             }
 
-            theResult = mLine.Calculate();
+            mLine.Calculate();
+
+            if(!mLine.Calculate())
+            {
+                return false;
+            }
+
             if (mprinted)
             {
-                Console.Write("Result of the Calcul is: " +  theResult + " \n");
+                Console.Write("Result of the Calcul is: " +  mLine.mResult + " \n");
             }
+
             return true;
         }
 
 
     }
 
-    class Line
-    {
-        public double mFirstOperande {get; private set;}
-        public double mSecondOperande { get; private set; }
-        public OPERATION mOperation { get; private set; }
-
-        public Line(double inFirstOperande, double inSecondOperande, OPERATION inOperation)
-        {
-            mFirstOperande = inFirstOperande;
-            mSecondOperande = inSecondOperande;
-            mOperation = inOperation;
-        }
-
-        public double Calculate()
-        {
-            double theResult = 0;
-
-            switch (mOperation)
-            {
-                case OPERATION.ADD:
-                    theResult = mFirstOperande + mSecondOperande;
-                    break;
-                case OPERATION.SOUS:
-                    theResult = mFirstOperande - mSecondOperande;
-                    break;
-                case OPERATION.DIV:
-                    theResult = mFirstOperande / mSecondOperande;
-                    break;
-                case OPERATION.MULT:
-                    theResult = mFirstOperande * mSecondOperande;
-                    break;
-            }
-            return theResult;
-        }
-    }
 }

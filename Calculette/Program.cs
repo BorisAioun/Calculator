@@ -133,40 +133,26 @@ namespace Calculette
             return true;
         }
 
-        public OPERATION ConvertOperation(string inOperation)
-        {
-            switch (inOperation)
-            {
-                case "+":
-                    return OPERATION.ADD;
-
-                case "-":
-                    return OPERATION.SOUS;
-                case "/":
-                    return OPERATION.DIV;
-                case "*":
-                    return OPERATION.MULT;
-                default:
-                    return OPERATION.DEFAULT;
-            }
-        }
-
         public Line CreateLine(string inLine)
         {
             Line theLine;
 
             string[] expression = inLine.Split(' ');
 
-            //Rajouter un test de sécurité sur le découpage de la chaine car quand pas d'espace ça bug
-
-            if ((expression[0] != System.String.Empty)
+            if (   (expression.Length == 3)
+                && (expression[0] != System.String.Empty)
                 && (expression[2] != System.String.Empty)
-                && (ConvertOperation(expression[1]) != OPERATION.DEFAULT))
+                && (Tools.ConvertOperation(expression[1]) != OPERATION.DEFAULT))
             {
-                theLine = new Line(Tools.StringToDouble(expression[0]),
+                theLine = new Line2_1(Tools.StringToDouble(expression[0]),
                                    Tools.StringToDouble(expression[2]),
-                                   ConvertOperation(expression[1]));
+                                   Tools.ConvertOperation(expression[1]));
 
+            }
+            else if (   (expression.Length == 1)
+                     && (expression[0] != System.String.Empty))
+            {
+                theLine = new Line1_0(expression[0]);     
             }
             else
             {
