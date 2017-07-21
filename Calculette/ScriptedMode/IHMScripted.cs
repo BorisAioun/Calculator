@@ -29,7 +29,7 @@ namespace Calculette.ScriptedMode
             string theCurrentLine = null;
 
             Program.DebugMessage("Process of the IHM Scripted Function\n");
-            Main_Calcul theCalcul = new Main_Calcul();
+            Main_Calcul theCalcul = new Main_Calcul(ref mVarList);
 
             //Ouverture du fichier
             StreamReader sr = new StreamReader(mFilePath);

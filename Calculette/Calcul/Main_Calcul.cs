@@ -12,19 +12,21 @@ namespace Calculette.Calcul
     {
         public Line mLine { get; set; }                  //the line which will be use to make the calcul.
         public bool mprinted { get; private set; }               //indicate if the result of a calcul should be printed in the screen
+        public LinkedList<Variable> mVarList { get; private set; }
 
-        public Main_Calcul(Line theLine)
+        public Main_Calcul(Line theLine,ref LinkedList<Variable> inList)
         {
             mLine = theLine;
             mprinted = true;
+            mVarList = inList;
         }
 
-        public Main_Calcul()
+        public Main_Calcul(ref LinkedList<Variable> inList)
         {
             mLine = null;
             mprinted = true;
+            mVarList = inList;
         }
-
 
         public bool Calculate()
         {

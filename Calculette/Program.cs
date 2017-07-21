@@ -107,8 +107,11 @@ namespace Calculette
 
     class IHM
     {
+        public LinkedList<Variable> mVarList;
+
         public IHM()
         {
+            mVarList = new LinkedList<Variable>();
         }
 
         public static bool YorNoDialog(string inMessage)
@@ -135,6 +138,8 @@ namespace Calculette
 
         public Line CreateLine(string inLine)
         {
+            // à revoir
+
             Line theLine;
 
             string[] expression = inLine.Split(' ');

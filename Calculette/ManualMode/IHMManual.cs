@@ -41,7 +41,7 @@ namespace Calculette.ManualMode
             }
             
 
-            Main_Calcul theCalcul = new Main_Calcul(CreateLine(theReadLine));
+            Main_Calcul theCalcul = new Main_Calcul(CreateLine(theReadLine), ref mVarList);
             Program.DebugMessage("Process of the IHM Manual Function\n");
 
 

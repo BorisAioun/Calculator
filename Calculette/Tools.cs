@@ -59,4 +59,83 @@ namespace Calculette
         }
     }
 
+
+    class ListVar
+    {
+        public LinkedList<Variable> mVarList { get; private set; }
+
+        public ListVar()
+        {
+            mVarList = new LinkedList<Variable>();
+        }
+
+
+        //Search in the List of variable if a var called "inVarName" Exist
+        public bool VarExist(string inVarName)
+        {
+            foreach(Variable theElement in mVarList) 
+            {
+                if (theElement.mName == inVarName)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool AddElement(Variable inVariable)
+        {
+            if (!VarExist(inVariable.mName))
+            {
+                mVarList.AddFirst(inVariable);
+                return true;
+            }
+            return false;
+        }
+
+        public bool DeleteElement(String inVarName)
+        {
+            Variable theVariable;
+            foreach(Variable theElement in mVarList)
+            {
+                if (theElement.mName == inVarName)
+                {
+                    theVariable = new Variable(inVarName, theElement.mValue);
+                    mVarList.Remove(theVariable);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public Variable ReturnElement(String inVarName)
+        {
+            foreach(Variable theElement in mVarList)
+            {
+                if (theElement.mName == inVarName)
+                {
+                    return theElement;
+                }
+            }
+            return null;
+        }
+
+        public bool ModifyVariable(String inVarName, double inNewValue)
+        {
+            foreach(Variable theElement in mVarList)
+            {
+                if (theElement.mName == inVarName)
+                {
+                    theElement.mValue = inNewValue;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    }
+
+
 }

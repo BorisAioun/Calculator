@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Calcul\Line.cs" />
     <Compile Include="Calcul\Main_Calcul.cs" />
+    <Compile Include="Calcul\Variable.cs" />
     <Compile Include="ManualMode\IHMManual.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
